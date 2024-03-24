@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 :root {
-  --color-primary: #6741d9;
-  --color-primary-light: #7950f2;
+  --color-primary: #424243;
+  --color-primary-light: #c3c2c4;
   --color-text: #dee2e6;
   --color-text-dark: #adb5bd;
   --color-background-100: #343a40;
@@ -32,8 +32,8 @@ body {
   background-image: linear-gradient(
     1deg,
     #01010b 0%, 
-    #1c022e 50%,
-    #2e0346 100%
+    #444444 50%,
+    #666565 100%
     
   );
   background-attachment: fixed; 
@@ -367,7 +367,7 @@ body {
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;
-  background-color: #f8f9fa;
+  background-color: #a1a2a2;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -527,7 +527,7 @@ body {
 .form {
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
+  background: #8b8b8b;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -549,7 +549,7 @@ body {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: #030303;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -560,7 +560,7 @@ body {
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
+  background: #676767;
 }
 .form .message {
   margin: 15px 0 0;
@@ -629,4 +629,61 @@ body {
 
 .custom-text-input .error-message {
   animation: fadeIn 0.3s ease-in-out;
+}
+
+
+
+
+
+.watched-movie-item {
+  cursor: pointer;
+  
+}
+
+.watched-movie-item:hover {
+  transform: scale(1.02); 
+  background-color: rgba(0, 0, 0, 0.1); 
+ 
+}
+
+
+
+
+.form-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1); 
+}
+
+form {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; 
+}
+
+
+
+
+.generic-button {
+  background-color: #504f50; 
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; 
+  cursor: pointer;
+  padding: 10px 10px;
+}
+
+.generic-button:hover {
+  background-color: #797879;
+  box-shadow: 0 9px 12px 0 rgba(247, 246, 247, 0.24), 0 12px 30px 0 rgba(249, 248, 248, 0.19);
 }

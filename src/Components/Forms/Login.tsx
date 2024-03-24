@@ -86,7 +86,7 @@ export default function Login({bool}:LoginProp) {
                     </Formik>
                     ) : (
                         <Formik
-                        initialValues={{ email: '', passWord: '', userName: '' }}
+                        initialValues={{ email: '', passWord: '', userName: '',firstName: '', lastName: '' }}
                         validationSchema={RegistrationSchema}
                         onSubmit={handleRegisterSubmit}
                         >
@@ -95,6 +95,8 @@ export default function Login({bool}:LoginProp) {
                                 <CustomTextInput type="text" name="email" placeholder="Email" />
                                 <CustomTextInput type="password" name="passWord" placeholder="Password" />
                                 <CustomTextInput type="text" name="userName" placeholder="Username" />
+                                <CustomTextInput type="text" name="firstName" placeholder="Firstname" />
+                                <CustomTextInput type="text" name="lastName" placeholder="Lastname" />
                                 <button type="submit">Register</button>
                             </Form>
                         )}
@@ -103,7 +105,7 @@ export default function Login({bool}:LoginProp) {
                 }
                 <p className="message">
                     {showLogin ? "Not registered? " : "Already registered? "}
-                    <a  onClick={toggleForm}>
+                    <a style={{ cursor: 'pointer' }} onClick={toggleForm}>
                         {showLogin ? "Create an account" : "Sign In"}
                     </a>
                 </p>

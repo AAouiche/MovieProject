@@ -6,6 +6,8 @@ import { router } from "../routing/Routes";
 import { Movie } from "../models/Movie";
 import { LoginForm } from "../models/login";
 import { RegisterForm } from "../models/Register";
+import { Profile } from "../models/Profile";
+import { ReviewUpdate } from "../models/ReviewUpdate";
 
 axios.defaults.baseURL = 'https://localhost:44305/api';
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -77,21 +79,23 @@ const responseBody = (response: AxiosResponse) => response.data;
 
 const requests = {
     get: (url: string , headers?:any) => axios.get(url, { headers }).then(responseBody),
-    post: (url: string , body: {},headers?:any) => axios.post(url, body, { headers }).then(responseBody),
+    post: (url: string , body?: {},headers?:any) => axios.post(url, body, { headers }).then(responseBody),
     put: (url: string , body: {}) => axios.put(url, body).then(responseBody),
     delete: (url: string) => axios.delete(url).then(responseBody)
 };
 
 const MovieReviewService = {
-    getReviews: (movieId: string) => requests.get(`/MovieReview/getReviews/${movieId}`),
-    createReview: (review: MovieReview) => requests.post(`/MovieReview/getReview`, review),
-    updateReview: (review: MovieReview) => requests.put(`/MovieReview/updateReview`, review),
-    deleteReview: (reviewId: number) => requests.delete(`/MovieReview/deleteReview/${reviewId}`)
+    getReviews: (imdbID: string) => requests.get(`/MovieReview/getReviews/${imdbID}`),
+    createReview: (review: MovieReview) => requests.post(`/MovieReview/createReview`, review),
+    updateReview: (review: ReviewUpdate) => requests.put(`/MovieReview/updateReview`, review),
+    deleteReview: (reviewId: number) => requests.delete(`/MovieReview/deleteReview/${reviewId}`),
+    upvoteReview: (reviewId: number) => requests.post(`/MovieReview/upvoteReview/${reviewId}`),
 };
 const AuthService = {
     login: (loginDetails: LoginForm) => requests.post('/account/login', loginDetails),
     register: (registerDetails: RegisterForm) => requests.post('/account/register', registerDetails),
     getUser: () => requests.get('/account/getUser'),
+    updateProfile: (profileDetails: Profile) => requests.put('/account/updateProfile', profileDetails),
 };
   
   const MovieService = {
@@ -99,11 +103,19 @@ const AuthService = {
     listWatchedMovies: () => requests.get('/account/List'),
     deleteWatchedMovie: (movieId: string) => requests.delete(`/account/Delete/${movieId}`),
   }
+  const ImageService = {
+    uploadImage: (imageFormData: FormData) => requests.post('/image/upload', imageFormData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    }),
+};
 
 const agent = {
     MovieReviewService,
     AuthService,
-    MovieService
+    MovieService,
+    ImageService
 }
  export default agent;
 

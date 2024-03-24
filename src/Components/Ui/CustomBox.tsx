@@ -3,7 +3,7 @@ import { useState } from "react";
 interface NavBarProps {
     children: React.ReactNode;
   }
-  export default function Box({ children }: NavBarProps) {
+  export default function CustomBox({ children }: NavBarProps) {
     const [isOpen, setIsOpen] = useState(true);
   
     return (

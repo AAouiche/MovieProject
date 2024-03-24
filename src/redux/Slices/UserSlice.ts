@@ -6,6 +6,7 @@ import { RegisterForm } from "../../models/Register";
 import 'react-toastify/dist/ReactToastify.css';
 import { RootState } from "../Store";
 import axios from "axios";
+import { Profile } from "../../models/Profile";
 
 
 interface UserState {
@@ -68,6 +69,24 @@ const initialState: UserState = {
         }
     }
 );
+export const updateUserProfile = createAsyncThunk<User, Profile, { rejectValue: string }>(
+  'user/updateProfile',
+  async (updateDetails, { rejectWithValue, getState }) => {
+    try {
+      const state = getState() as RootState;
+      const token = state.user.token;
+
+      if (!token) {
+          throw new Error('No token found');
+      }
+
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      return await agent.AuthService.updateProfile(updateDetails);
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
   
   const userSlice = createSlice({
     name: 'user',
@@ -128,7 +147,26 @@ const initialState: UserState = {
            state.isLoading = false;
            
           state.error = action.payload as string;
-         });
+         })
+         
+  
+  
+  
+        // Handling updateProfile
+        .addCase(updateUserProfile.pending, (state) => {
+           state.isLoading = true;
+         })
+        .addCase(updateUserProfile.fulfilled, (state, action) => {
+           state.isLoading = false;
+           state.user = action.payload; 
+           console.log("payload",action.payload);
+           state.error = null;
+         })
+        .addCase(updateUserProfile.rejected, (state, action) => {
+           state.isLoading = false;
+           state.error = action.payload as string;
+         })
+         
     },
   });
   

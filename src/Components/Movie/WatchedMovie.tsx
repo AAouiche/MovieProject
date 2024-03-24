@@ -2,22 +2,29 @@ import { useDispatch } from "react-redux";
 import { Movie } from "../../models/Movie";
 import { AppDispatch } from "../../redux/Store";
 import { deleteWatchedMovie } from "../../redux/Slices/WatchedMovieSlice";
+import { setSelectedMovie } from "../../redux/Slices/MovieSlice";
 
 interface WatchedMovieProps {
     movie: Movie;
-    onDeleteWatched?: (id: string) => void;
+    
 }
 
 function WatchedMovie({ movie }:WatchedMovieProps) {
 
     const dispatch = useDispatch<AppDispatch>();
+   
 
-  const onDeleteWatched = (id:string) => {
-    dispatch(deleteWatchedMovie(id));
-    console.log("pressed");
-  };
+    const handleSelectMovie = (imdbID: Movie) => {
+     dispatch(setSelectedMovie(imdbID));
+    };
+
+    const onDeleteWatched = (id: string, event: React.MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation(); 
+        dispatch(deleteWatchedMovie(id));
+        console.log("pressed");
+    };
     return (
-        <li className="watched-movie-item">
+        <li onClick={() =>handleSelectMovie(movie)} className="watched-movie-item">
             <img src={movie.Poster} alt={`${movie.Title} poster`} />
             <div className="movie-info">
                 <h3>{movie.Title}</h3>
@@ -27,8 +34,8 @@ function WatchedMovie({ movie }:WatchedMovieProps) {
                     <p><span>⏳</span> {movie.runtime} min</p>
                 </div>
             </div>
-            <button onClick={() => onDeleteWatched(movie.imdbID)} 
-                className="btn-delete-watched-movie"
+            <button onClick={(e) => onDeleteWatched(movie.imdbID, e)} 
+                className="generic-button"
             >
                 Remove
             </button>

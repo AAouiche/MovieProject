@@ -15,6 +15,7 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import HomePage from './Components/Ui/Home/Home';
 import { fetchUserData } from './redux/Slices/UserSlice';
+import Loader from './Components/Ui/Loader';
 
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
 
 
   if(isLoading){
-    return <div>Loading...</div>;
+    return <Loader/>;
   }
 
   if(isLoggedIn && location.pathname ==='/'){

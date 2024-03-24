@@ -3,12 +3,12 @@ import App from "../App";
 import PublicRoute from "./PublicRoutes";
 
 import PrivateRoute from "./ProtectedRoutes";
-import MovieList from "../Components/Movie/MovieList";
-import Login  from "../Components/Auth/Login";
+
+import Login  from "../Components/Forms/Login";
 import NotFound from "../Components/Ui/errors/NotFound";
 import DashBoard from "../Components/DashBoard";
-import RegistrationForm from "../Components/Auth/Register";
-import BasicForm from "../Components/Auth/Basic";
+import ProfilePage from "../Components/Forms/UserProfile";
+
 
 export const routes: RouteObject[] = [
     {
@@ -28,6 +28,13 @@ export const routes: RouteObject[] = [
             element: <PrivateRoute />,
             children: [
               { index: true, element: <DashBoard  /> }
+            ]
+          },
+          {
+            path: '/profile',
+            element: <PrivateRoute />,
+            children: [
+              { index: true, element: <ProfilePage  /> }
             ]
           },
         { path: 'not-found', element: <NotFound /> },

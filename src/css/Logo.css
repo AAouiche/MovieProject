@@ -1,0 +1,27 @@
+@keyframes pop {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
+  
+  .logo {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    user-select: none;
+    transition: transform 0.2s, color 0.2s;
+  }
+  
+  .logo:hover {
+    transform: scale(1.05);
+    color: #ff4081;
+  }
+  
+  .logo span, .logo h1 {
+    transition: transform 0.2s, color 0.2s;
+  }

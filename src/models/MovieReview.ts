@@ -1,13 +1,13 @@
-import { Movie } from "./Movie";
-import { User } from "./User";
+
+
 
 export interface MovieReview {
-    reviewId: number;
-    userId: string;
-    movieId: string;
-    content: string;
-    rating: number;
-    reviewDate: Date;
-    user: User;
-    movie: Movie;
-  }
+    ReviewId: number;
+    imdbID: string;
+    Content: string;
+    Rating: number;
+    ReviewDate: Date;
+    UserName: string;
+    UpVotes: number;
+    ImgUrl?: string;
+}

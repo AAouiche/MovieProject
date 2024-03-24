@@ -3,7 +3,9 @@ import moviesReducer from './Slices/MovieSlice';
 import userReducer from './Slices/UserSlice';
 import watchedMoviesReducer from './Slices/WatchedMovieSlice';
 import reviewReducer from './Slices/MovieReviewSlice';
+import imageReducer from './Slices/ImageSlice';
 import movieApi from './Api/MovieApi';
+
 
 
 const store = configureStore({
@@ -12,6 +14,7 @@ const store = configureStore({
     user: userReducer,
     watchedMovies : watchedMoviesReducer,
     movieReview : reviewReducer,
+    image : imageReducer,
     [movieApi.reducerPath]: movieApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>

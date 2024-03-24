@@ -21,6 +21,7 @@ function RegistrationForm(){
     const initialValues: RegisterForm = {
         userName: '',
         passWord: '',
+        firstName:'',
         email: ''
     };
 
