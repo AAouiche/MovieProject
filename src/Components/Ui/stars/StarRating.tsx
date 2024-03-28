@@ -8,7 +8,7 @@ interface StarRatingProps {
 export default function StarRating({ onRatingChange }: StarRatingProps) {
     const [rating, setRating] = useState(1);
 
-    const handleRatingChange = (event: React.ChangeEvent<{}>, newValue: number | null) => {
+    const handleRatingChange = (_: unknown, newValue: number | null) => {
         
         const updatedRating = newValue ? Math.max(newValue, 1) : 1;
         setRating(updatedRating);

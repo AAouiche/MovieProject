@@ -1,8 +1,8 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+
+import { useSelector } from 'react-redux';
 
 import WatchedMovie from './WatchedMovie';
-import { AppDispatch, RootState } from '../../redux/Store';
+import {  RootState } from '../../redux/Store';
 
 
 function WatchedMoviesList() {
