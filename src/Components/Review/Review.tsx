@@ -109,7 +109,7 @@ function Review({ reviews }: ReviewProps) {
                 <Box sx={modalStyle}>
                     {isEditMode ? (
                         <Formik initialValues={{ content: reviews.Content, rating: reviews.Rating }} onSubmit={handleUpdate}>
-                            {({ values, setFieldValue }) => (
+                            {({  setFieldValue }) => (
                                 <Form>
                                     <Field as={TextField} name="content" multiline fullWidth rows={4} />
                                     <StarRating

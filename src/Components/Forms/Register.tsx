@@ -21,8 +21,9 @@ function RegistrationForm(){
     const initialValues: RegisterForm = {
         userName: '',
         passWord: '',
-        firstName:'',
-        email: ''
+        firstName: '',
+        email: '',
+        lastName: ''
     };
 
     const handleSubmit = (values: RegisterForm) => {
