@@ -3,7 +3,6 @@ import { useFetchMovieDetailsQuery } from "../../redux/Api/MovieApi";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/Store";
 import { clearSelectedMovie } from "../../redux/Slices/MovieSlice";
-import StarRating from "../Ui/stars/StarRating";
 import { addWatchedMovie, deleteWatchedMovie } from "../../redux/Slices/WatchedMovieSlice";
 import { Movie } from "../../models/Movie";
 
@@ -16,7 +15,7 @@ interface MovieDetailsProps {
   
   function MovieDetails({ selectedId ,toggleReview,showReview}: MovieDetailsProps) {
     
-    const { data: movie, isLoading, error } = useFetchMovieDetailsQuery(selectedId);
+    const { data: movie,  error } = useFetchMovieDetailsQuery(selectedId);
     const watchedMovies = useSelector((state: RootState) => state.watchedMovies.watchedMovies);
     const dispatch = useDispatch<AppDispatch>();
 

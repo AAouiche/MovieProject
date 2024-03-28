@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { deleteReview, fetchReviews, reviewSlice, upvoteReview } from "../../redux/Slices/MovieReviewSlice";
+import {  fetchReviews, reviewSlice } from "../../redux/Slices/MovieReviewSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/Store";
-import { Card, CardContent, Typography, CircularProgress, Box, Grid, Avatar, Rating, Button, MenuItem, Select, SelectChangeEvent } from '@mui/material';
-import { format } from 'date-fns';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import {  Typography, CircularProgress, Box, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+
 import Review from "./Review";
-import { SortCriteria, SortField } from "../../models/SortCriteria";
+import {  SortField } from "../../models/SortCriteria";
 
 interface MovieReviewsListProps {
   movieId: string;
@@ -34,11 +33,7 @@ const MovieReviewsList = ({ movieId }: MovieReviewsListProps) => {
       setSortOrder(order);
       dispatch(reviewSlice.actions.sortReviewsBy({ field: sortField, order }));
   };
-  const handleDelete = (reviewId: number) => {
-    if (window.confirm('Are you sure you want to delete this review?')) {
-        dispatch(deleteReview(reviewId));
-    }
-};
+  
 
   if (isLoading) return <CircularProgress />;
 

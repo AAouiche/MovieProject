@@ -1,5 +1,5 @@
 import { MovieReview } from "../../models/MovieReview";
-import { Card, CardContent, Typography, CircularProgress, Box, Grid, Avatar, Rating, Button, Modal, TextField } from '@mui/material';
+import { Card, CardContent, Typography, Box, Avatar, Rating, Button, Modal, TextField } from '@mui/material';
 import { format } from 'date-fns';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { useDispatch, useSelector } from "react-redux";
@@ -13,12 +13,7 @@ import StarRating from "../Ui/stars/StarRating";
 interface ReviewProps {
     reviews: MovieReview;
   }
-  var cardStyle = {
-    display: 'block',
-    width: '30vw',
-    transitionDuration: '0.3s',
-    height: '45vw'
-}
+  
 function Review({ reviews }: ReviewProps) {
     const dispatch = useDispatch<AppDispatch>();
     const currentUser = useSelector((state: RootState) => state.user.user);

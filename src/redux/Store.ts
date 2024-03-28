@@ -1,4 +1,4 @@
-import { configureStore, ThunkMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import moviesReducer from './Slices/MovieSlice';
 import userReducer from './Slices/UserSlice';
 import watchedMoviesReducer from './Slices/WatchedMovieSlice';

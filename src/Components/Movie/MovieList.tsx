@@ -1,11 +1,5 @@
 
-import {  useDispatch, useSelector } from 'react-redux';
-
-
-
-
-
-import { RootState} from '../../redux/Store';
+import {  useDispatch } from 'react-redux';
 import MovieComponent from './Movie';
 import { Movie } from '../../models/Movie';
 import { setSelectedMovie } from '../../redux/Slices/MovieSlice';

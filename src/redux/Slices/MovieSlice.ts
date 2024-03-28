@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction, SerializedError } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { Movie } from '../../models/Movie';
 import { MoviesState } from '../../models/MoviesState';
 

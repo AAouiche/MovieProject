@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
-import { AppDispatch, RootState } from "../redux/Store";
+import {  RootState } from "../redux/Store";
 
 export default function PrivateRoute() {
   

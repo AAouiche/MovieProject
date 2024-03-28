@@ -1,5 +1,5 @@
-import { Avatar, Button, ButtonBase, Grid, TextField } from "@mui/material";
-import { Field, Form, Formik } from "formik";
+import { Avatar, Button } from "@mui/material";
+import {  Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/Store";
 import { updateUserProfile } from "../../redux/Slices/UserSlice";
@@ -22,7 +22,7 @@ const ProfileSchema = Yup.object().shape({
 export default function ProfilePage() {
     const dispatch = useDispatch<AppDispatch>();
     const user = useSelector((state: RootState) => state.user.user);
-    const image = useSelector((state: RootState) => state.image.uploadedImage);
+    // const image = useSelector((state: RootState) => state.image.uploadedImage);
     const initialProfileValues = {
         email: user?.Email || '',
         userName: user?.UserName || '',

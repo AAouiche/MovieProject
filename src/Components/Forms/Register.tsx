@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import { registerUser } from '../../redux/Slices/UserSlice';
 import { AppDispatch } from '../../redux/Store';
 import { RegisterForm } from '../../models/Register';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
+import {  Field, Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 
 
