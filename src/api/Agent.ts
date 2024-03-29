@@ -9,7 +9,7 @@ import { RegisterForm } from "../models/Register";
 import { Profile } from "../models/Profile";
 import { ReviewUpdate } from "../models/ReviewUpdate";
 
-axios.defaults.baseURL = 'https://movieapi-production.up.railway.app/';
+axios.defaults.baseURL = 'https://movieapi-production.up.railway.app/api';
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 axios.interceptors.response.use(
