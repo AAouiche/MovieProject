@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+# MovieProject Front End
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This Frontend serves as the user interface for a full stack application focused on searching for movies using the omdb Api with my own api for soem extra features such as login/register writing reviews etc. 
+## Core Components:
+UI Components: Organised into reusable components. Utlises libraries such as formik and mui.
 
-Currently, two official plugins are available:
+State Management: Manages application state across components using Redux.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Routing: Manages navigation and rendering of different views within the application, using React Router.
 
-## Expanding the ESLint configuration
+Integration: Connects with the backend API to authenticate users, write reviews, and search for movies witH OMDB Api .
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Built with
+ -[React] Front end framework
+ -[Redux] State management
+ -[Formik] form Submission library
+ -[MUi] styling
+ -[Axios] Api requests
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+ ## Clone
+ git clone https://github.com/AAouiche/ReactActivities.git
+
+ ## Depoyment
+ front end - https://movieproject-production-a068.up.railway.app/    back end - https://movieapi-production.up.railway.app/ 
