@@ -22,7 +22,7 @@ const ProfileSchema = Yup.object().shape({
 export default function ProfilePage() {
     const dispatch = useDispatch<AppDispatch>();
     const user = useSelector((state: RootState) => state.user.user);
-     const image = useSelector((state: RootState) => state.image.uploadedImage);
+     
     const initialProfileValues = {
         email: user?.Email || '',
         userName: user?.UserName || '',
