@@ -1,22 +1,22 @@
-import { useState } from "react";
+
 
 interface NavBarProps {
     children: React.ReactNode;
   }
   export default function CustomBox({ children }: NavBarProps) {
-    const [isOpen, setIsOpen] = useState(true);
+    
   
     return (
       <div className="box">
-        <button className="btn-toggle" onClick={() => setIsOpen(!isOpen)}>
+        {/* <button className="btn-toggle" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? "–" : "+"}
-        </button>
+        </button> */}
   
-        {isOpen && (
+        
           <div className="box-content">
             {children}
           </div>
-        )}
+      
       </div>
     );
   }

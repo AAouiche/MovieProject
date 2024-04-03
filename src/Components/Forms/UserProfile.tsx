@@ -7,7 +7,7 @@ import { Profile } from "../../models/Profile";
 import { CustomTextInput } from "../FormComponents/CustomTextInput";
 import * as Yup from 'yup';
 import { useRef } from "react";
-import { uploadImage } from "../../redux/Slices/ImageSlice";
+import { uploadImage } from "../../redux/Slices/UserSlice";
 
 
 
@@ -22,7 +22,7 @@ const ProfileSchema = Yup.object().shape({
 export default function ProfilePage() {
     const dispatch = useDispatch<AppDispatch>();
     const user = useSelector((state: RootState) => state.user.user);
-    // const image = useSelector((state: RootState) => state.image.uploadedImage);
+     const image = useSelector((state: RootState) => state.image.uploadedImage);
     const initialProfileValues = {
         email: user?.Email || '',
         userName: user?.UserName || '',
@@ -68,7 +68,7 @@ export default function ProfilePage() {
                         <Form className="login-form">
                            
                                     <Avatar
-                                        src={user?.ImageUrl || '/default-avatar.png'}
+                                        src={ user?.ImageUrl|| '/default-avatar.png'}
                                         alt="Profile"
                                         sx={{ width: 90, height: 90, cursor: 'pointer' }} 
                                         onClick={handleAvatarClick}

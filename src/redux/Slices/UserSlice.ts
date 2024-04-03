@@ -49,22 +49,19 @@ const initialState: UserState = {
   export const fetchUserData = createAsyncThunk(
     'user/fetchUserData',
     async (_, { getState, rejectWithValue }) => {
+        const state = getState() as RootState;
+        
+        if (!state.user.token) {
+            console.log("No token found");
+            return rejectWithValue("No token found");
+        }
+
         try {
-            
-          const state = getState() as RootState;
-
-            
-            const token = state.user.token; 
-            console.log(token);
-
-            if (!token) {
-                throw new Error('No token found');
-            }
-            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            axios.defaults.headers.common['Authorization'] = `Bearer ${state.user.token}`;
             const userData = await agent.AuthService.getUser();
             console.log(userData);
             return userData;
-        } catch (error:any) {
+        } catch (error: any) {
             return rejectWithValue(error.message);
         }
     }
@@ -84,6 +81,22 @@ export const updateUserProfile = createAsyncThunk<User, Profile, { rejectValue: 
       return await agent.AuthService.updateProfile(updateDetails);
     } catch (error: any) {
       return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const uploadImage = createAsyncThunk(
+  'image/uploadImage',
+  async (imageFile: File, { rejectWithValue }) => {
+    try {
+      const formData = new FormData();
+      formData.append('imageFile', imageFile);
+      
+      const response = await agent.ImageService.uploadImage(formData);
+      
+      return response;
+    } catch (error) {
+      return rejectWithValue((error as Error).message);
     }
   }
 );
@@ -167,6 +180,18 @@ export const updateUserProfile = createAsyncThunk<User, Profile, { rejectValue: 
            state.error = action.payload as string;
          })
          
+         .addCase(uploadImage.pending, (state) => {
+          state.isLoading = true;
+          state.error = null;
+        })
+        .addCase(uploadImage.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.user!.ImageUrl = action.payload.url;
+        })
+        .addCase(uploadImage.rejected, (state, action) => {
+          state.isLoading = false;
+          state.error = action.error.message ?? 'Failed to upload image';
+        });
     },
   });
   

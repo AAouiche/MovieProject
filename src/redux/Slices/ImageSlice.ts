@@ -46,7 +46,7 @@ interface ImageState {
         })
         .addCase(uploadImage.fulfilled, (state, action) => {
           state.isLoading = false;
-          state.uploadedImage = action.payload;
+          state.uploadedImage = action.payload.url;
         })
         .addCase(uploadImage.rejected, (state, action) => {
           state.isLoading = false;
