@@ -4,7 +4,7 @@ import { MoviesState } from '../../models/MoviesState';
 
 
 const KEY = import.meta.env.VITE_MOVIE_API_KEY;
-const URL = `http://www.omdbapi.com/?apikey=${KEY}&i=`;
+const URL = `https://www.omdbapi.com/?apikey=${KEY}&i=`;
 export const fetchMovieDetails = createAsyncThunk(
   'movies/fetchMovieDetails',
   async (movieId: string, { rejectWithValue }) => {
