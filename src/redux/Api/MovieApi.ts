@@ -5,7 +5,7 @@ import { Movie } from '../../models/Movie';
 const KEY = import.meta.env.VITE_MOVIE_API_KEY;
 export const movieApi = createApi({
     reducerPath: 'movieApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://www.omdbapi.com/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://www.omdbapi.com/' }),
     endpoints: (builder) => ({
       fetchMovies: builder.query<Movie[], string>({
         query: (query) => `?apikey=${KEY}&s=${query}`,
