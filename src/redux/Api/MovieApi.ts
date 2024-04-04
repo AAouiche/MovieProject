@@ -3,7 +3,7 @@ import { Movie } from '../../models/Movie';
 
 
 const KEY = import.meta.env.VITE_MOVIE_API_KEY;
-const URL = 'httpssssssssssssssssssss://www.omdbapi.com/';
+const URL = 'https://www.omdbapi.com/';
 export const movieApi = createApi({
     reducerPath: 'movieApi',
     baseQuery: fetchBaseQuery({ baseUrl: URL }),
