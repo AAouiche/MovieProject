@@ -3,12 +3,17 @@ import { Movie } from '../../models/Movie';
 
 
 const KEY = import.meta.env.VITE_MOVIE_API_KEY;
+const URL = 'https://www.omdbapi.com/';
 export const movieApi = createApi({
     reducerPath: 'movieApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://www.omdbapi.com/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: URL }),
     endpoints: (builder) => ({
       fetchMovies: builder.query<Movie[], string>({
-        query: (query) => `?apikey=${KEY}&s=${query}`,
+        query: (query) => {
+          const url = `?apikey=${KEY}&s=${query}`;
+          console.log('Fetching movies with URL:', URL); 
+          return url;
+      },
         transformResponse: (response: { Search: Movie[] }) => response.Search,
       }),
       fetchMovieDetails: builder.query<Movie, string>({
